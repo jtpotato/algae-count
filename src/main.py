@@ -17,8 +17,9 @@ def get_file_paths(directory):
 
 file_paths = get_file_paths("images")
 
-print("image,algae_index")
+with open("algae_index.csv", "w") as f:
+    print("image,algae_index", file=f)
 
-for path in file_paths:
-    calculate_algae.get_algae(path)
-    time.sleep(1)
+    for path in file_paths:
+        calculate_algae.get_algae(path, f)
+        time.sleep(1)

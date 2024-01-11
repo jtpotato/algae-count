@@ -12,7 +12,7 @@ def adjust_contrast_brightness(img, contrast: float = 1.0, brightness: int = 0):
     return cv.addWeighted(img, contrast, img, 0, brightness)
 
 
-def get_algae(path):
+def get_algae(path, outfile):
     img = cv.imread(path)
 
     # diff between green and blue channels
@@ -23,4 +23,4 @@ def get_algae(path):
     img = np.clip(img, 0, 100)
 
     index = np.average(img)
-    print(path, index, sep=",", end="\n")
+    print(path, index, sep=",", end="\n", file=outfile)

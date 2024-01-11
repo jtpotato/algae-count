@@ -1,6 +1,6 @@
 # algae-count
 
-![](https://project-cards.jtpotatodev.workers.dev/?project=algae-count&started=11%20Jan%202024&codename=Sullivan%20Creek)
+![](https://project-cards.jtpotatodev.workers.dev/?project=algae-count&started=11%20Jan%202024&codename=Sullivans%20Creek)
 
 Quantitatively judge the amount of algal blooms in a given body of water.
 

@@ -15,12 +15,20 @@ def adjust_contrast_brightness(img, contrast: float = 1.0, brightness: int = 0):
 def get_algae(path, outfile):
     img = cv.imread(path)
 
-    # diff between green and blue channels
-    img = np.subtract(img[:, :, 1], img[:, :, 0])
+    # Split the image into BGR channels
+    b, g, r = cv.split(img)
 
-    img = adjust_contrast_brightness(img, 1, -30)
+    img_adjusted = cv.subtract(g, cv.divide(b, 1.5))
 
-    img = np.clip(img, 0, 100)
+    img_adjusted = adjust_contrast_brightness(img_adjusted, 3, 50)
 
-    index = np.average(img)
+    # # show all images
+    # cv.namedWindow("Adjusted", cv.WINDOW_NORMAL)
+    # cv.imshow("Adjusted", img_adjusted)
+    # cv.waitKey(0)
+
+    cv.destroyAllWindows()
+
+    index = np.average(img_adjusted)
+    print(path, index, sep=",", end="\n")
     print(path, index, sep=",", end="\n", file=outfile)
